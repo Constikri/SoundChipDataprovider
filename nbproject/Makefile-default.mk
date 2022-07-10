@@ -30,12 +30,12 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=elf
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=${DISTDIR}/Soundchip_DataProvider.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=${DISTDIR}/SoundChipDataprovider.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=${DISTDIR}/Soundchip_DataProvider.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=${DISTDIR}/SoundChipDataprovider.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
@@ -88,7 +88,7 @@ FIXDEPS=fixDeps
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-default.mk ${DISTDIR}/Soundchip_DataProvider.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-default.mk ${DISTDIR}/SoundChipDataprovider.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=32MX795F512L
 MP_LINKER_FILE_OPTION=
@@ -107,122 +107,122 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/FatFS/ff.o: FatFS/ff.c  .generated_files/flags/default/7d9ea0090fc3f60f4237a7eb05e1a24d6ca9ec15 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/FatFS/ff.o: FatFS/ff.c  .generated_files/flags/default/322eae78aed6197bca3c2532ca9867247226a99d .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/FatFS" 
 	@${RM} ${OBJECTDIR}/FatFS/ff.o.d 
 	@${RM} ${OBJECTDIR}/FatFS/ff.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/FatFS/ff.o.d" -o ${OBJECTDIR}/FatFS/ff.o FatFS/ff.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/FatFS/diskio.o: FatFS/diskio.c  .generated_files/flags/default/ab1cf2ca01913552cd7d52ea5bd9b20afba4a048 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/FatFS/diskio.o: FatFS/diskio.c  .generated_files/flags/default/ff968ad6524b1b983699dad4cf27286303ed42a1 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/FatFS" 
 	@${RM} ${OBJECTDIR}/FatFS/diskio.o.d 
 	@${RM} ${OBJECTDIR}/FatFS/diskio.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/FatFS/diskio.o.d" -o ${OBJECTDIR}/FatFS/diskio.o FatFS/diskio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/FatFS/ffsystem.o: FatFS/ffsystem.c  .generated_files/flags/default/3edce4cf91d73c2fd1f0bf0d0d902a6ad15b3fec .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/FatFS/ffsystem.o: FatFS/ffsystem.c  .generated_files/flags/default/acbe939a60e7bfb9fe68ae05aa67845d2a591ce2 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/FatFS" 
 	@${RM} ${OBJECTDIR}/FatFS/ffsystem.o.d 
 	@${RM} ${OBJECTDIR}/FatFS/ffsystem.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/FatFS/ffsystem.o.d" -o ${OBJECTDIR}/FatFS/ffsystem.o FatFS/ffsystem.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/FatFS/ffunicode.o: FatFS/ffunicode.c  .generated_files/flags/default/8e5fc286f119747986cc06100038fd847454a41f .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/FatFS/ffunicode.o: FatFS/ffunicode.c  .generated_files/flags/default/2b50fe3f47933a172326cecc381280888e658458 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/FatFS" 
 	@${RM} ${OBJECTDIR}/FatFS/ffunicode.o.d 
 	@${RM} ${OBJECTDIR}/FatFS/ffunicode.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/FatFS/ffunicode.o.d" -o ${OBJECTDIR}/FatFS/ffunicode.o FatFS/ffunicode.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SDCard/device/sd_spi.o: SDCard/device/sd_spi.c  .generated_files/flags/default/e58c514a5870487fb4eb61dcdec06d6c5d344b81 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/SDCard/device/sd_spi.o: SDCard/device/sd_spi.c  .generated_files/flags/default/9b71ae596ae0b0e883fe52bacc92b5a37c727d1a .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/SDCard/device" 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi.o.d 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SDCard/device/sd_spi.o.d" -o ${OBJECTDIR}/SDCard/device/sd_spi.o SDCard/device/sd_spi.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o: SDCard/device/sd_spi_platform_dependencies.c  .generated_files/flags/default/1e2b902b2a0302f4b043f7d382fcf5c25b643a41 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o: SDCard/device/sd_spi_platform_dependencies.c  .generated_files/flags/default/df6ffee3e13207dae6dd475ed2ee3e0a6a18ab67 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/SDCard/device" 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d" -o ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o SDCard/device/sd_spi_platform_dependencies.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SPI/plib_spi2_master.o: SPI/plib_spi2_master.c  .generated_files/flags/default/3cda19853cbef3e8ed52fd53fb9d4e33fa3d786a .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/SPI/plib_spi2_master.o: SPI/plib_spi2_master.c  .generated_files/flags/default/6b79a0ce308ae12bcd71a7f8d9d49879f86a98c .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/SPI" 
 	@${RM} ${OBJECTDIR}/SPI/plib_spi2_master.o.d 
 	@${RM} ${OBJECTDIR}/SPI/plib_spi2_master.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SPI/plib_spi2_master.o.d" -o ${OBJECTDIR}/SPI/plib_spi2_master.o SPI/plib_spi2_master.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SoftSPI.o: SoftSPI.c  .generated_files/flags/default/d34b44123c3e102578637277b1b4e683af7b6449 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/SoftSPI.o: SoftSPI.c  .generated_files/flags/default/3ecf4bb17a75ec8073de2794d75b7cef7e46edaf .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/SoftSPI.o.d 
 	@${RM} ${OBJECTDIR}/SoftSPI.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SoftSPI.o.d" -o ${OBJECTDIR}/SoftSPI.o SoftSPI.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/millis.o: millis.c  .generated_files/flags/default/a4f6652c0e66695ef91dba54e6b94233453c9e53 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/millis.o: millis.c  .generated_files/flags/default/526d44486586cf076f25128d95e027c665456590 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/millis.o.d 
 	@${RM} ${OBJECTDIR}/millis.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/millis.o.d" -o ${OBJECTDIR}/millis.o millis.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/c863d76c22bf3d29fa30aafcb662e6b95dd26ee6 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/8d59be5219f37eb111a821b866c0d8355e9398e7 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/FatFS/ff.o: FatFS/ff.c  .generated_files/flags/default/5fae3e18b3a0782e2411c3ad0b32acfa7faf72c1 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/FatFS/ff.o: FatFS/ff.c  .generated_files/flags/default/78d085ae913bbc2db2d00ce250a5cd56b3e1cf65 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/FatFS" 
 	@${RM} ${OBJECTDIR}/FatFS/ff.o.d 
 	@${RM} ${OBJECTDIR}/FatFS/ff.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/FatFS/ff.o.d" -o ${OBJECTDIR}/FatFS/ff.o FatFS/ff.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/FatFS/diskio.o: FatFS/diskio.c  .generated_files/flags/default/814ac0c784229ed8ee3a11f8a5ec493b91856fc6 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/FatFS/diskio.o: FatFS/diskio.c  .generated_files/flags/default/65ad8ee9b01ec8d685419dbef989611ed60aeaef .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/FatFS" 
 	@${RM} ${OBJECTDIR}/FatFS/diskio.o.d 
 	@${RM} ${OBJECTDIR}/FatFS/diskio.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/FatFS/diskio.o.d" -o ${OBJECTDIR}/FatFS/diskio.o FatFS/diskio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/FatFS/ffsystem.o: FatFS/ffsystem.c  .generated_files/flags/default/8b6b4fecd34bf552c94f58aecf59c06dd60a7ba5 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/FatFS/ffsystem.o: FatFS/ffsystem.c  .generated_files/flags/default/ffb73ad79b2e2eb57a20788d21c9391bdd8c58f4 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/FatFS" 
 	@${RM} ${OBJECTDIR}/FatFS/ffsystem.o.d 
 	@${RM} ${OBJECTDIR}/FatFS/ffsystem.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/FatFS/ffsystem.o.d" -o ${OBJECTDIR}/FatFS/ffsystem.o FatFS/ffsystem.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/FatFS/ffunicode.o: FatFS/ffunicode.c  .generated_files/flags/default/6ee7cb315f32c156faba18e766d1b8f4d492bee1 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/FatFS/ffunicode.o: FatFS/ffunicode.c  .generated_files/flags/default/1a38eeb99dc9f53fcc3249c7adae01c2027917d8 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/FatFS" 
 	@${RM} ${OBJECTDIR}/FatFS/ffunicode.o.d 
 	@${RM} ${OBJECTDIR}/FatFS/ffunicode.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/FatFS/ffunicode.o.d" -o ${OBJECTDIR}/FatFS/ffunicode.o FatFS/ffunicode.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SDCard/device/sd_spi.o: SDCard/device/sd_spi.c  .generated_files/flags/default/3d88f684503ebf1289e36d0e70fe3dcd1a9325b2 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/SDCard/device/sd_spi.o: SDCard/device/sd_spi.c  .generated_files/flags/default/5cd4acbb79953f9fd1f4a53009f30b9be981afa .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/SDCard/device" 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi.o.d 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SDCard/device/sd_spi.o.d" -o ${OBJECTDIR}/SDCard/device/sd_spi.o SDCard/device/sd_spi.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o: SDCard/device/sd_spi_platform_dependencies.c  .generated_files/flags/default/ca3fb2a6b023b6177d9f856c732bf29ebb80dfb1 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o: SDCard/device/sd_spi_platform_dependencies.c  .generated_files/flags/default/87bb561746ca46a953e00114812626b9cae502ac .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/SDCard/device" 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d" -o ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o SDCard/device/sd_spi_platform_dependencies.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SPI/plib_spi2_master.o: SPI/plib_spi2_master.c  .generated_files/flags/default/5406305bb0366460ff9e692ae957eab95016b179 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/SPI/plib_spi2_master.o: SPI/plib_spi2_master.c  .generated_files/flags/default/2993021c7823a8c1d883bce2a2078c08e1ec0780 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}/SPI" 
 	@${RM} ${OBJECTDIR}/SPI/plib_spi2_master.o.d 
 	@${RM} ${OBJECTDIR}/SPI/plib_spi2_master.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SPI/plib_spi2_master.o.d" -o ${OBJECTDIR}/SPI/plib_spi2_master.o SPI/plib_spi2_master.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SoftSPI.o: SoftSPI.c  .generated_files/flags/default/f028c521b06deb010bc82f13e5888f4f67418528 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/SoftSPI.o: SoftSPI.c  .generated_files/flags/default/57061084dbb799b6897ab0df604189f9006f3346 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/SoftSPI.o.d 
 	@${RM} ${OBJECTDIR}/SoftSPI.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SoftSPI.o.d" -o ${OBJECTDIR}/SoftSPI.o SoftSPI.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/millis.o: millis.c  .generated_files/flags/default/458cf2895330484d5c6fb79c485773e8f709cd00 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/millis.o: millis.c  .generated_files/flags/default/7da50fe90baf69a8952d802f0244735779171913 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/millis.o.d 
 	@${RM} ${OBJECTDIR}/millis.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/millis.o.d" -o ${OBJECTDIR}/millis.o millis.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/f65dcac2970aa1d04db1615acdb379003d3474de .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/1c01b507f9c33eba96966d89d3e1cf6cd13458cd .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
@@ -239,15 +239,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${DISTDIR}/Soundchip_DataProvider.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+${DISTDIR}/SoundChipDataprovider.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/Soundchip_DataProvider.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)   -mreserve=data@0x0:0x1FC -mreserve=boot@0x1FC02000:0x1FC02FEF -mreserve=boot@0x1FC02000:0x1FC024FF  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=_min_heap_size=2048,--defsym=_min_stack_size=2048,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/SoundChipDataprovider.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)   -mreserve=data@0x0:0x1FC -mreserve=boot@0x1FC02000:0x1FC02FEF -mreserve=boot@0x1FC02000:0x1FC024FF  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=_min_heap_size=2048,--defsym=_min_stack_size=2048,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
-${DISTDIR}/Soundchip_DataProvider.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+${DISTDIR}/SoundChipDataprovider.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/Soundchip_DataProvider.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=2048,--defsym=_min_stack_size=2048,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
-	${MP_CC_DIR}\\xc32-bin2hex ${DISTDIR}/Soundchip_DataProvider.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/SoundChipDataprovider.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=2048,--defsym=_min_stack_size=2048,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC_DIR}\\xc32-bin2hex ${DISTDIR}/SoundChipDataprovider.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 

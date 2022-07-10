@@ -6,5 +6,5 @@
 CND_BASEDIR=`pwd`
 # default configuration
 CND_ARTIFACT_DIR_default=dist/default/production
-CND_ARTIFACT_NAME_default=Soundchip_DataProvider.X.production.hex
-CND_ARTIFACT_PATH_default=dist/default/production/Soundchip_DataProvider.X.production.hex
+CND_ARTIFACT_NAME_default=SoundChipDataprovider.production.hex
+CND_ARTIFACT_PATH_default=dist/default/production/SoundChipDataprovider.production.hex

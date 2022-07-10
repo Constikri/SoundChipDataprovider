@@ -1257,7 +1257,7 @@ sd_spi_send_byte_command(
 )
 {
 	sd_spi_select_card();
-	//sd_spi_receive_byte();
+	sd_spi_receive_byte();
 
 	/* Send command with transmission bit. */
 	sd_spi_send_byte(0x40 | command);

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Soundchip_DataProvider.X
+PROJECTNAME=SoundChipDataprovider
 
 # Active Configuration
 DEFAULTCONF=default

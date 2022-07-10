@@ -49,7 +49,7 @@ sd_spi_end_transaction(
 	void
 )
 {
-    SoftSPI_end();
+    //SoftSPI_end();
 }
 
 void
