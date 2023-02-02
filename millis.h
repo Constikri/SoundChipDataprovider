@@ -1,7 +1,3 @@
-/*
- * Description
- */
-
 #ifndef _MILLIS_H_
 #define _MILLIS_H_
 

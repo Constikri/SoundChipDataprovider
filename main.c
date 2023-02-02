@@ -1,17 +1,13 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
+/**
   @File Name
-    filename.c
+    main.c
 
   @Summary
-    Brief description of the file.
+    Main routine of the programm
 
   @Description
-    Describe the purpose of this file.
+    This file initialises all component and runs the main loop of the program, which reads data from a SD card and send it off to a SoftSPI connection
  */
 /* ************************************************************************** */
 
