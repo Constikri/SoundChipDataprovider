@@ -61,7 +61,7 @@ extern "C" {
 /** State variables used by the SD raw library. */
 typedef struct sd_spi_card {
 	/** Digital pin for setting CS high or low. */
-	uint8_t chip_select_pin: 			8;
+	uint16_t chip_select_pin: 			16;
 	/** The speed of the SPI bus. Use 0 for 25KHz and 1 for 25MHz. */
 	uint8_t spi_speed: 					3;
 	/** Determines if the card is MMC, SD1, SD2, or SDHC/SDXC. */
@@ -203,7 +203,7 @@ typedef struct sd_spi_card {
 */
 int8_t
 sd_spi_init(
-	uint8_t chip_select_pin
+	uint16_t chip_select_pin
 );
 
 /**

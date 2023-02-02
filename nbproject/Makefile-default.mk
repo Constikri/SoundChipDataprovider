@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=FatFS/ff.c FatFS/diskio.c FatFS/ffsystem.c FatFS/ffunicode.c SDCard/device/sd_spi.c SDCard/device/sd_spi_platform_dependencies.c SPI/plib_spi2_master.c SoftSPI.c millis.c main.c
+SOURCEFILES_QUOTED_IF_SPACED=FatFS/ff.c FatFS/diskio.c FatFS/ffsystem.c FatFS/ffunicode.c SDCard/device/sd_spi.c SDCard/device/sd_spi_platform_dependencies.c SoftSPI.c millis.c main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/FatFS/ff.o ${OBJECTDIR}/FatFS/diskio.o ${OBJECTDIR}/FatFS/ffsystem.o ${OBJECTDIR}/FatFS/ffunicode.o ${OBJECTDIR}/SDCard/device/sd_spi.o ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o ${OBJECTDIR}/SPI/plib_spi2_master.o ${OBJECTDIR}/SoftSPI.o ${OBJECTDIR}/millis.o ${OBJECTDIR}/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/FatFS/ff.o.d ${OBJECTDIR}/FatFS/diskio.o.d ${OBJECTDIR}/FatFS/ffsystem.o.d ${OBJECTDIR}/FatFS/ffunicode.o.d ${OBJECTDIR}/SDCard/device/sd_spi.o.d ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d ${OBJECTDIR}/SPI/plib_spi2_master.o.d ${OBJECTDIR}/SoftSPI.o.d ${OBJECTDIR}/millis.o.d ${OBJECTDIR}/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/FatFS/ff.o ${OBJECTDIR}/FatFS/diskio.o ${OBJECTDIR}/FatFS/ffsystem.o ${OBJECTDIR}/FatFS/ffunicode.o ${OBJECTDIR}/SDCard/device/sd_spi.o ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o ${OBJECTDIR}/SoftSPI.o ${OBJECTDIR}/millis.o ${OBJECTDIR}/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/FatFS/ff.o.d ${OBJECTDIR}/FatFS/diskio.o.d ${OBJECTDIR}/FatFS/ffsystem.o.d ${OBJECTDIR}/FatFS/ffunicode.o.d ${OBJECTDIR}/SDCard/device/sd_spi.o.d ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d ${OBJECTDIR}/SoftSPI.o.d ${OBJECTDIR}/millis.o.d ${OBJECTDIR}/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/FatFS/ff.o ${OBJECTDIR}/FatFS/diskio.o ${OBJECTDIR}/FatFS/ffsystem.o ${OBJECTDIR}/FatFS/ffunicode.o ${OBJECTDIR}/SDCard/device/sd_spi.o ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o ${OBJECTDIR}/SPI/plib_spi2_master.o ${OBJECTDIR}/SoftSPI.o ${OBJECTDIR}/millis.o ${OBJECTDIR}/main.o
+OBJECTFILES=${OBJECTDIR}/FatFS/ff.o ${OBJECTDIR}/FatFS/diskio.o ${OBJECTDIR}/FatFS/ffsystem.o ${OBJECTDIR}/FatFS/ffunicode.o ${OBJECTDIR}/SDCard/device/sd_spi.o ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o ${OBJECTDIR}/SoftSPI.o ${OBJECTDIR}/millis.o ${OBJECTDIR}/main.o
 
 # Source Files
-SOURCEFILES=FatFS/ff.c FatFS/diskio.c FatFS/ffsystem.c FatFS/ffunicode.c SDCard/device/sd_spi.c SDCard/device/sd_spi_platform_dependencies.c SPI/plib_spi2_master.c SoftSPI.c millis.c main.c
+SOURCEFILES=FatFS/ff.c FatFS/diskio.c FatFS/ffsystem.c FatFS/ffunicode.c SDCard/device/sd_spi.c SDCard/device/sd_spi_platform_dependencies.c SoftSPI.c millis.c main.c
 
 
 
@@ -143,12 +143,6 @@ ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o: SDCard/device/sd_spi_
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d" -o ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o SDCard/device/sd_spi_platform_dependencies.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/SPI/plib_spi2_master.o: SPI/plib_spi2_master.c  .generated_files/flags/default/6b79a0ce308ae12bcd71a7f8d9d49879f86a98c .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
-	@${MKDIR} "${OBJECTDIR}/SPI" 
-	@${RM} ${OBJECTDIR}/SPI/plib_spi2_master.o.d 
-	@${RM} ${OBJECTDIR}/SPI/plib_spi2_master.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SPI/plib_spi2_master.o.d" -o ${OBJECTDIR}/SPI/plib_spi2_master.o SPI/plib_spi2_master.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
 ${OBJECTDIR}/SoftSPI.o: SoftSPI.c  .generated_files/flags/default/3ecf4bb17a75ec8073de2794d75b7cef7e46edaf .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/SoftSPI.o.d 
@@ -203,12 +197,6 @@ ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o: SDCard/device/sd_spi_
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d 
 	@${RM} ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o.d" -o ${OBJECTDIR}/SDCard/device/sd_spi_platform_dependencies.o SDCard/device/sd_spi_platform_dependencies.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/SPI/plib_spi2_master.o: SPI/plib_spi2_master.c  .generated_files/flags/default/2993021c7823a8c1d883bce2a2078c08e1ec0780 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
-	@${MKDIR} "${OBJECTDIR}/SPI" 
-	@${RM} ${OBJECTDIR}/SPI/plib_spi2_master.o.d 
-	@${RM} ${OBJECTDIR}/SPI/plib_spi2_master.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/SPI/plib_spi2_master.o.d" -o ${OBJECTDIR}/SPI/plib_spi2_master.o SPI/plib_spi2_master.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 ${OBJECTDIR}/SoftSPI.o: SoftSPI.c  .generated_files/flags/default/57061084dbb799b6897ab0df604189f9006f3346 .generated_files/flags/default/af031a62ccc0c18b099f063c5edfd8e7f9b606f2
 	@${MKDIR} "${OBJECTDIR}" 

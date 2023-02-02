@@ -48,12 +48,11 @@
 
 #include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
+#include <stdlib.h>
 #include <xc.h>
 #include "millis.h"
 #include "FatFS/ff.h"
 #include "SoftSPI.h"
-#include "SPI/plib_spi2_master.h"
 
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 80000000
@@ -112,7 +111,17 @@ typedef struct
     short bitsPerSample;
     int *extra;
     unsigned int extralen;        
-} dWAVHEADER; 
+} dWAVHEADER;
+
+SOFTSPI fpgaspi = {
+    .mosi = PINMOSI_FPGA,
+    .miso = PINMISO_FPGA,
+    .sck = PINSCK_FPGA,
+    .delay = 2,
+    .cke = 0,
+    .ckp = 0,
+    .order = MSBFIRST,
+};
 
 void delay(uint_fast16_t del) {
     for (uint_fast16_t i = 0; i < del; i++) {
@@ -123,17 +132,18 @@ void delay(uint_fast16_t del) {
 int main(void){
     FATFS *fs;
     FIL *fil;        /* File object */
-    uint8_t *line; /* Line buffer */
+    uint32_t *line; /* Line buffer */
     UINT br;
     FRESULT fr;     /* FatFs return code */
     dWAVHEADER *header;
+    //uint8_t b0,b1,b2,b3;
     
     millis_init();
     fs = malloc(sizeof(FATFS));
     fil = malloc(sizeof(FIL));
     header = malloc(sizeof(dWAVHEADER));
     header->extra = malloc(sizeof(int));
-    line = malloc(4);
+    line = malloc(sizeof(uint32_t));
     
     /* Setup Reading data */
     /* Give a work area to the default drive */
@@ -141,28 +151,31 @@ int main(void){
     if (fr) return (int)fr;
     
     /* Open a text file */
-    fr = f_open(fil, "file.wav", FA_READ);
+    //fr = f_open(fil, "filetest.wav", FA_READ);
+    fr = f_open(fil, "champion.wav", FA_READ);
     if (fr) return (int)fr;
     
     fr = f_read(fil, header, sizeof(dWAVHEADER), &br);
     if (fr || br == 0) return (int)fr; 
     
-    /* Setup transfering data*/
-    SPI_TRANSFER_SETUP spisetup = {
-        .clockFrequency = 1250000, // 1,250,000
-        .clockPhase = 0,
-        .clockPolarity = 0,
-        .dataBits = 32
-    };
-    SPI2_Initialize();
-    SPI2_TransferSetup(&spisetup, 0);
+    //initialise fpga spi
+    SoftSPI_begin(&fpgaspi);
+    //transfer setup fpga spi
+    SoftSPI_setClockDivider(&fpgaspi, (uint16_t)baud_to_clock_div(20000000)); // 20,000,000
+    pinMode(PINCS_FPGA, OUTPUT);
+    digitalWrite(PINCS_FPGA, HIGH);
     
     /* "Play Song" */
     while(1){
-        fr = f_read(fil, line, sizeof(4), &br);
+        fr = f_read(fil, line, sizeof(uint32_t), &br);
         if (fr || br == 0) return (int)fr;
         
-        SPI2_Write(line, sizeof(4));
+        //b0, b1, b2, b3 = *line;
+        
+        //write
+        digitalWrite(PINCS_FPGA, LOW);
+        SoftSPI_transfer32(&fpgaspi, *line + (65535/2 << 16) + 65535/2 );
+        digitalWrite(PINCS_FPGA, HIGH);
         
         delay(1814);
     }

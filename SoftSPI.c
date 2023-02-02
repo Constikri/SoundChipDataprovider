@@ -5,101 +5,90 @@
     Company Name
 
   @File Name
-    filename.c
+    filename->c
 
   @Summary
-    Brief description of the file.
+    Brief description of the file->
 
   @Description
-    Describe the purpose of this file.
+    Describe the purpose of this file->
  */
 /* ************************************************************************** */
 
 
 #include "SoftSPI.h"
 
-//TODO: check cke,ckp,order if compatible
-struct SoftSPI Sspi = {
-    .mosi = PINMOSI,
-    .miso = PINMISO,
-    .sck = PINSCK,
-    .delay = 2,
-    .cke = 0,
-    .ckp = 0,
-    .order = MSBFIRST,
-};
-
-void SoftSPI_begin() {
-    *(volatile uint32_t *)(&AD1PCFGSET) = 0x3C00;
-    pinMode(Sspi.mosi, OUTPUT);
-    pinMode(Sspi.miso, INPUT);
-    pinMode(Sspi.sck, OUTPUT);
+void SoftSPI_begin(SOFTSPI *spi) {
+    *(volatile uint32_t *)(&AD1PCFGSET) = 0xffff;
+    pinMode(spi->mosi, OUTPUT);
+    pinMode(spi->miso, INPUT);
+    pinMode(spi->sck, OUTPUT);
 }
 
-void SoftSPI_end() {
-    pinMode(Sspi.mosi, INPUT);
-    pinMode(Sspi.miso, INPUT);
-    pinMode(Sspi.sck, INPUT);
+void SoftSPI_end(SOFTSPI *spi) {
+    pinMode(spi->mosi, INPUT);
+    pinMode(spi->miso, INPUT);
+    pinMode(spi->sck, INPUT);
 }
 
-void SoftSPI_setBitOrder(uint8_t order) {
-    Sspi.order = order & 1;
+void SoftSPI_setBitOrder(SOFTSPI *spi, uint8_t order) {
+    spi->order = order & 1;
 }
 
-void SoftSPI_setDataMode(uint8_t mode) {
+void SoftSPI_setDataMode(SOFTSPI *spi, uint8_t mode) {
     switch (mode) {
         case SPI_MODE0:
-            Sspi.ckp = 0;
-            Sspi.cke = 0;
+            spi->ckp = 0;
+            spi->cke = 0;
             break;
         case SPI_MODE1:
-            Sspi.ckp = 0;
-            Sspi.cke = 1;
+            spi->ckp = 0;
+            spi->cke = 1;
             break;
         case SPI_MODE2:
-            Sspi.ckp = 1;
-            Sspi.cke = 0;
+            spi->ckp = 1;
+            spi->cke = 0;
             break;
         case SPI_MODE3:
-            Sspi.ckp = 1;
-            Sspi.cke = 1;
+            spi->ckp = 1;
+            spi->cke = 1;
             break;
     }
 
-    digitalWrite(Sspi.sck, Sspi.ckp ? HIGH : LOW);
+    digitalWrite(spi->sck, spi->ckp ? HIGH : LOW);
 }
 
-void SoftSPI_setClockDivider(uint16_t div) {
+void SoftSPI_setClockDivider(SOFTSPI *spi ,uint16_t div) {
     switch (div) {
         case SPI_CLOCK_DIV2:
-            Sspi.delay = 2;
+            spi->delay = 2;
             break;
         case SPI_CLOCK_DIV3:
-            Sspi.delay = 3;
+            spi->delay = 3;
             break;
         case SPI_CLOCK_DIV4:
-            Sspi.delay = 4;
+            spi->delay = 4;
             break;
         case SPI_CLOCK_DIV8:
-            Sspi.delay = 8;
+            spi->delay = 8;
             break;
         case SPI_CLOCK_DIV16:
-            Sspi.delay = 16;
+            spi->delay = 16;
             break;
         case SPI_CLOCK_DIV32:
-            Sspi.delay = 32;
+            spi->delay = 32;
             break;
         case SPI_CLOCK_DIV64:
-            Sspi.delay = 64;
+            spi->delay = 64;
             break;
         case SPI_CLOCK_DIV128:
-            Sspi.delay = 128;
+            spi->delay = 128;
             break;
         case SPI_CLOCK_DIV320:
-            Sspi.delay = 320;
+            spi->delay = 320;
             break;
         default:
-            Sspi.delay = 128;
+            spi->delay = 128;
             break;
     }
 }
@@ -114,9 +103,9 @@ void wait(uint_fast16_t del) {
     }
 }
 
-uint8_t SoftSPI_transfer(uint8_t val) {
+uint8_t SoftSPI_transfer(SOFTSPI *spi, uint8_t val) {
     uint8_t out = 0;
-    if (Sspi.order == MSBFIRST) {
+    if (spi->order == MSBFIRST) {
         uint8_t v2 = 
             ((val & 0x01) << 7) |
             ((val & 0x02) << 5) |
@@ -129,7 +118,7 @@ uint8_t SoftSPI_transfer(uint8_t val) {
         val = v2;
     }
 
-    uint16_t del = Sspi.delay >> 1;
+    uint16_t del = spi->delay >> 1;
 
     uint8_t bval = 0;
     /*
@@ -139,28 +128,28 @@ uint8_t SoftSPI_transfer(uint8_t val) {
      * CPOL := 1, CPHA := 1 => INIT = 1, PRE =  0 , MID = 1, POST = Z|1
      */
 
-    int sck = (Sspi.ckp) ? HIGH : LOW;
+    int sck = (spi->ckp) ? HIGH : LOW;
 
     for (uint8_t bit = 0u; bit < 8u; bit++)
     {
-        if (Sspi.cke) {
+        if (spi->cke) {
             sck ^= 1;
-            digitalWrite(Sspi.sck, sck);            
+            digitalWrite(spi->sck, sck);            
             wait(del);
         }
 
-        /* ... Write bit */
-        digitalWrite(Sspi.mosi, ((val & (1<<bit)) ? HIGH : LOW));
+        /* ->->-> Write bit */
+        digitalWrite(spi->mosi, ((val & (1<<bit)) ? HIGH : LOW));
 
         wait(del);
 
-        sck ^= 1u; digitalWrite(Sspi.sck, sck);
+        sck ^= 1u; digitalWrite(spi->sck, sck);
 
-        /* ... Read bit */
+        /* ->->-> Read bit */
         {
-            bval = digitalRead(Sspi.miso);
+            bval = digitalRead(spi->miso);
 
-            if (Sspi.order == MSBFIRST) {
+            if (spi->order == MSBFIRST) {
                 out <<= 1;
                 out |= bval;
             } else {
@@ -171,16 +160,16 @@ uint8_t SoftSPI_transfer(uint8_t val) {
 
         wait(del);
 
-        if (!Sspi.cke) {
+        if (!spi->cke) {
             sck ^= 1u;
-            digitalWrite(Sspi.sck, sck);
+            digitalWrite(spi->sck, sck);
         }
     }
 
     return out;
 }
 
-uint16_t SoftSPI_transfer16(uint16_t data)
+uint16_t SoftSPI_transfer16(SOFTSPI *spi, uint16_t data)
 {
 	union {
 		uint16_t val;
@@ -192,12 +181,41 @@ uint16_t SoftSPI_transfer16(uint16_t data)
   
 	in.val = data;
 
-	if ( Sspi.order == MSBFIRST ) {
-		out.msb = SoftSPI_transfer(in.msb);
-		out.lsb = SoftSPI_transfer(in.lsb);
+	if ( spi->order == MSBFIRST ) {
+		out.msb = SoftSPI_transfer(spi,in.msb);
+		out.lsb = SoftSPI_transfer(spi,in.lsb);
 	} else {
-		out.lsb = SoftSPI_transfer(in.lsb);
-		out.msb = SoftSPI_transfer(in.msb);
+		out.lsb = SoftSPI_transfer(spi,in.lsb);
+		out.msb = SoftSPI_transfer(spi,in.msb);
+	}
+
+	return out.val;
+}
+
+uint32_t SoftSPI_transfer32(SOFTSPI *spi, uint32_t data)
+{
+	union {
+		uint32_t val;
+		struct {
+			uint8_t b0; //lsb
+            uint8_t b1;
+			uint8_t b2;
+			uint8_t b3; //msb
+		};
+	} in, out;
+  
+	in.val = data;
+
+	if ( spi->order == MSBFIRST ) {
+		out.b3 = SoftSPI_transfer(spi,in.b3);
+		out.b2 = SoftSPI_transfer(spi,in.b2);
+        out.b1 = SoftSPI_transfer(spi,in.b1);
+		out.b0 = SoftSPI_transfer(spi,in.b0);
+	} else {
+		out.b0 = SoftSPI_transfer(spi,in.b0);
+		out.b1 = SoftSPI_transfer(spi,in.b1);
+        out.b2 = SoftSPI_transfer(spi,in.b2);
+		out.b3 = SoftSPI_transfer(spi,in.b3);
 	}
 
 	return out.val;

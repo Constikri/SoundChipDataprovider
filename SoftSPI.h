@@ -27,13 +27,17 @@ extern "C" {
 #endif
 
 /*
- 0011|1100|0000|0000
+ 0011|1100|0011|1100
  */
 typedef enum{
-    PIN_RB10 = 0x04,
-    PIN_RB11 = 0x08,
-    PIN_RB12 = 0x10,
-    PIN_RB13 = 0x20
+    PIN_RB2 = 0x0004,
+    PIN_RB3 = 0x0008,
+    PIN_RB4 = 0x0010,
+    PIN_RB5 = 0x0020,
+    PIN_RB10 = 0x0400,
+    PIN_RB11 = 0x0800,
+    PIN_RB12 = 0x1000,
+    PIN_RB13 = 0x2000
 }SPI_PIN;
 
 typedef enum{
@@ -57,10 +61,14 @@ typedef enum{
     
 #define MSBFIRST 1
 #define LSBFIRST 0
-#define PINMOSI PIN_RB11
-#define PINMISO PIN_RB10
-#define PINSCK PIN_RB12
-#define PINCS PIN_RB13
+#define PINMOSI_FPGA PIN_RB2
+#define PINMISO_FPGA PIN_RB3
+#define PINSCK_FPGA PIN_RB4
+#define PINCS_FPGA PIN_RB5
+#define PINMOSI_SD PIN_RB11
+#define PINMISO_SD PIN_RB10
+#define PINSCK_SD PIN_RB12
+#define PINCS_SD PIN_RB13
 
 #if !defined(INPUT)
 #define INPUT	1
@@ -82,21 +90,23 @@ struct SoftSPI{
     uint8_t cke;
     uint8_t ckp;
     uint16_t delay;
-    uint8_t miso;
-    uint8_t mosi;
-    uint8_t sck;
+    uint16_t miso;
+    uint16_t mosi;
+    uint16_t sck;
     uint8_t order;
 };
+
+typedef struct SoftSPI SOFTSPI;
 
 static inline void pinMode(SPI_PIN pin, bool mode)
 {
     switch(mode)
     {
         case INPUT:
-            *(volatile uint32_t *)(&TRISBSET) = pin << 8;
+            *(volatile uint32_t *)(&TRISBSET) = pin;
             break;
         case OUTPUT:
-            *(volatile uint32_t *)(&TRISBCLR) = pin << 8;
+            *(volatile uint32_t *)(&TRISBCLR) = pin;
             break;
     }
 }
@@ -106,28 +116,28 @@ static inline void digitalWrite(SPI_PIN pin, bool value)
     switch(value)
     {
         case HIGH:
-            *(volatile uint32_t *)(&LATBSET) = pin << 8;
+            *(volatile uint32_t *)(&LATBSET) = pin;
             break;
         case LOW:
-            *(volatile uint32_t *)(&LATBCLR) = pin << 8;
+            *(volatile uint32_t *)(&LATBCLR) = pin;
             break;
     }
 }
 static inline bool digitalRead(SPI_PIN pin)
 {
-    pin = pin << 8;
     return (bool)((*(volatile uint32_t *)(&PORTB) & (uint32_t)pin) >> pin);
 }
 
-void SoftSPI_begin();
-void SoftSPI_end();
-void SoftSPI_setBitOrder(uint8_t);
-void SoftSPI_setDataMode(uint8_t);
-void SoftSPI_setClockDivider(uint16_t);
+void SoftSPI_begin(SOFTSPI *spi);
+void SoftSPI_end(SOFTSPI *spi);
+void SoftSPI_setBitOrder(SOFTSPI *spi, uint8_t);
+void SoftSPI_setDataMode(SOFTSPI *spi, uint8_t);
+void SoftSPI_setClockDivider(SOFTSPI *spi, uint16_t);
 void wait(uint_fast16_t del);
 uint_fast16_t baud_to_clock_div(int baudrate);
-uint8_t SoftSPI_transfer(uint8_t);
-uint16_t SoftSPI_transfer16(uint16_t data);
+uint8_t SoftSPI_transfer(SOFTSPI *spi, uint8_t);
+uint16_t SoftSPI_transfer16(SOFTSPI *spi, uint16_t data);
+uint32_t SoftSPI_transfer32(SOFTSPI *spi, uint32_t data);
 
 
     /* Provide C++ Compatibility */

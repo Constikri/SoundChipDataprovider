@@ -47,13 +47,13 @@ extern "C" {
 
 void
 sd_spi_pin_mode(
-	uint8_t pin,
+	uint16_t pin,
 	uint8_t mode
 );
 
 void
 sd_spi_digital_write(
-	uint8_t pin,
+	uint16_t pin,
 	uint8_t state
 );
 

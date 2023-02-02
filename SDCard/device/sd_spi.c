@@ -163,7 +163,7 @@ sd_spi_unselect_card(
 
 int8_t
 sd_spi_init(
-	uint8_t chip_select_pin
+	uint16_t chip_select_pin
 )
 {
 	//sd_spi_dirty_write = 0;

@@ -77,7 +77,7 @@ DSTATUS disk_initialize (
 	DSTATUS stat;
 	int result;
 
-	result = sd_spi_init(0x20);
+	result = sd_spi_init(0x2000); //init with drive number ~ chip select pin in this case
     
     stat = (DSTATUS)result;
     return stat;

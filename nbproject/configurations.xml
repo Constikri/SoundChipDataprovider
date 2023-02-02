@@ -31,11 +31,6 @@
         <itemPath>SDCard/sd_spi_commands.h</itemPath>
         <itemPath>SDCard/sd_spi_info.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="SPI" displayName="SPI2" projectFiles="true">
-        <itemPath>SPI/plib_spi2_master.c</itemPath>
-        <itemPath>SPI/plib_spi2_master.h</itemPath>
-        <itemPath>SPI/plib_spi_master_common.h</itemPath>
-      </logicalFolder>
       <logicalFolder name="f3" displayName="SPIsoft" projectFiles="true">
         <itemPath>SoftSPI.h</itemPath>
         <itemPath>SoftSPI.c</itemPath>

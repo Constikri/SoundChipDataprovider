@@ -6,7 +6,7 @@
 
 volatile uint32_t core_timer_millis = 0;
 
-void __ISR(_CORE_TIMER_VECTOR, IPL2SOFT) Timer1_InterruptHandler(void){ //_TIMER_1_VECTOR
+void __ISR(_CORE_TIMER_VECTOR, IPL2SOFT) CoreTimer_InterruptHandler(void){
     unsigned long ct_count = _CP0_GET_COUNT();
     unsigned long period = CORE_TICK_RATE;
     
